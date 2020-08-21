@@ -1,7 +1,9 @@
 const http = require('http')
-http.createServer((req,res) => {
+const url = require('url')
+http.createServer((req, res) => {
   res.statusCode = 200
-  res.setHeader('content-type', 'text/plain')
-  res.write('hi,node')
-  res.end()
+  res.setHeader('content-type', 'text-plain')
+  const reqUrl = req.url
+  const userInfo = url.parse(reqUrl,true).query
+  res.end(userInfo.age)
 }).listen(8888)

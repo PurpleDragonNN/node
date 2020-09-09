@@ -5,8 +5,10 @@ html
         meta(charset='utf-8')
     body
         div
-            p
-            span #{a}
+            - for(let i=0;i<8;i++)
+                div(id="id"+i)
+            p(style="background: red") sdf
+            span #{obj}
 
 
 

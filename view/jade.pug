@@ -1,14 +1,75 @@
-
 doctype html
 html
     head
         meta(charset='utf-8')
     body
         div
-            - for(let i=0;i<8;i++)
-                div(id="id"+i)
-            p(style="background: red") sdf
-            span #{obj}
+            - for(let i=0;i<2;i++)
+                div(id="id" + i)
+
+        p
+            img.img(
+                src="../../assets/img/favicon.ico"
+                alt='23'
+                id='img'
+            )
+    - let id = 'idddd'
+    div(data-json = `
+            {
+                a: ${id}
+            }
+        `)
+    div(escaped="<code>")
+    div(unescaped!="<code>")
+
+    input(checked=true)
+    input(checked=false)
+    input(checked=true.toString())
+    p.
+        这是一个#[strong sdsd#[i asdf]]很长很长而且还很无聊的段落，还没有结束，是的，非常非常地长。
+        突然出现了一个 。
+    p
+        | 如果我不用嵌入功能来书写，一些标签比如
+        strong strong
+        | 和
+        em em
+        | 可能会产生意外的结果。
+    p 在 #[strong strong] 和 #[em em] 旁边
+    //
+        注释
+        水电费
+    div
+    - let title='tt'
+    h1 #{title.toUpperCase()}
+    p Escaping works with \#{sdfsdf}
+    - var riskyBusiness = "<em>我希望通过外籍教师 Peter 找一位英语笔友。</em>";
+        p asdfsdfsa!{riskyBusiness}
+    - var user = { description: 'foo bar baz' }
+    - var authorised = false
+    unless !user
+        p=user.description
+
+
+
+    - let friends = 10
+    case friends
+        when 0: p #{friends + 1}个朋友
+        when 1
+            p #{friends + 1}个朋友
+        default
+            p #{friends + 2}个朋友
+
+    p
+        for item,index in ['一','二','三','四']
+            li(id='id' + index) 2#{item}
+    div
+
+
+    mixin list(val)
+        p 这是#{val}
+    +list('狗')
+    +list('猫')
+    +list('猪')
 
 
 

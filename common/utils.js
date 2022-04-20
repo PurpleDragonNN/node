@@ -4,12 +4,13 @@ const url = require('url')
 module.exports = {
   mime(type){
     return new Promise((resolve, reject) => {
-      fs.readFile('./common/mime.json',(err,data) => {
+      fs.readFile('../common/mime.json',(err,data) => {
         if (err) {
-          console.log('err:',err);
+          console.log('err1:',err);
           reject()
+        } else {
+          resolve(JSON.parse(data)[type])
         }
-        resolve(JSON.parse(data)[type])
       })
     })
 

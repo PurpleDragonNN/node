@@ -41,5 +41,5 @@ module.exports = {
         res.end('不存在该页面')
       }
     })
-  }
+  },
 }
